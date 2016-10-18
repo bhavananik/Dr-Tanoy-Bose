@@ -5137,6 +5137,8 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
                     console.log(response);
                 });
             };
+            
+            
             $scope.payNow = function (finalamount) {
                 console.log(finalamount);
                 $timeout.cancel(stopped1);
