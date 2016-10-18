@@ -3,7 +3,7 @@ var session;
 var subscriber;
 angular.module('your_app_name.controllers', ['ionic', 'ngCordova'])
         .controller('AuthCtrl', function ($scope, $state, $ionicConfig, $rootScope) {
-            $scope.interface = window.localStorage.setItem('interface_id', '6');
+            $scope.interface = window.localStorage.setItem('interface_id', '20');
             if (window.localStorage.getItem('id') != null) {
                 $rootScope.userLogged = 1;
                 $rootScope.username = window.localStorage.getItem('fname');
@@ -46,7 +46,7 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
             console.log('sdad---' + $rootScope.userLogged + " == " + window.localStorage.getItem('id'));
             // added generic code ---
 
-            window.localStorage.setItem('interface_id', '6');
+            window.localStorage.setItem('interface_id', '20');
             $scope.interface = window.localStorage.getItem('interface_id');
             $scope.userType = 'patient';
             $scope.action = 'login';
@@ -431,7 +431,7 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
                         $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
                         //$state.go('auth.walkthrough', {}, {reload: true});
                         window.localStorage.setItem('apkLanguage', 'english');
-                        window.localStorage.setItem('interface_id', '6');
+                        window.localStorage.setItem('interface_id', '20');
                         $scope.sideMenu();
                         $state.go('app.category-list');
                     }, 30);
@@ -484,7 +484,7 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
         })
 //LOGIN
         .controller('LoginCtrl', function ($scope, $state, $http, $ionicHistory, $templateCache, $q, $rootScope, $ionicLoading, $timeout) {
-            window.localStorage.setItem('interface_id', '6');
+            window.localStorage.setItem('interface_id', '20');
             $scope.interface = window.localStorage.getItem('interface_id');
             $scope.userType = 'patient';
             $scope.action = 'login';
@@ -619,7 +619,7 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
         })
 
         .controller('SignupCtrl', function ($scope, $state, $http, $rootScope, $ionicScrollDelegate) {
-            $scope.interface = window.localStorage.setItem('interface_id', '6');
+            $scope.interface = window.localStorage.setItem('interface_id', '20');
             $scope.registervia = window.localStorage.setItem('registervia', 'apk');
             $scope.user = {};
             $scope.user.name = '';
@@ -904,16 +904,16 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
             } else {
                 $rootScope.userLogged = 0;
             }
-            window.localStorage.setItem('interface_id', '6');
+            window.localStorage.setItem('interface_id', '20');
             $scope.interface = window.localStorage.getItem('interface_id');
             $scope.userId = window.localStorage.getItem('id');
             $http({
-                    method: 'GET',
-                    url: domain + 'image-slider',
-                    params: {interfaceno: $scope.interface}
-                }).then(function successCallback(response) {
-                    $scope.sliderImages = response.data;
-                });
+                method: 'GET',
+                url: domain + 'image-slider',
+                params: {interfaceno: $scope.interface}
+            }).then(function successCallback(response) {
+                $scope.sliderImages = response.data;
+            });
             $scope.getcatlang = function () {
                 $http({
                     method: 'GET',
@@ -5129,7 +5129,10 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
                     $ionicHistory.nextViewOptions({
                         disableBack: true
                     });
-                    $state.go('app.thankyouc', {'data': response.data}, {reload: true});
+                    //if (response.data == 1 || response.data == 2)
+                        $state.go('app.thankyouc', {'data': response.data}, {reload: true});
+//                    else
+//                        $state.go('app.thankyouc', {'data': "fail"}, {reload: true});
                 }, function errorCallback(response) {
                     console.log(response);
                 });
@@ -7738,7 +7741,7 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
         })
 
         .controller('GenericLoginCtrl', function ($scope, $state, $sce, $rootScope, $ionicLoading, $http, $stateParams, $timeout, $filter) {
-            window.localStorage.setItem('interface_id', '6');
+            window.localStorage.setItem('interface_id', '20');
             $scope.interface = window.localStorage.getItem('interface_id');
             $scope.userType = 'patient';
             $scope.action = 'login';

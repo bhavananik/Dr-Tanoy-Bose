@@ -219,12 +219,17 @@
                                                 </ul>
                                                 <div class="clr"></div>
                                                 <div class="item item-body p0 brd-0" ng-repeat="cs in clinicSch track by $index">
-                                                    <!--<ul class="wk">
+                                                    <ul class="wk">
                                                         <li ng-repeat="day in cs.service_details| orderBy:'' | groupBy:['day_of_week']">
                                                             <strong ng-show="day.group_by_CHANGED">{{ day.day_of_week|limitTo:1}} : </strong>
                                                             {{day.from|limitTo:2}} - {{day.to|limitTo:2}}
                                                         </li>
-                                                    </ul>-->
+                                                    </ul>
+                                                    <div class="full addr hide" id = {{cs.id}}full>{{cs.address}}</div>
+                                                    <div class="short addr" id = {{cs.id}}short>{{cs.address.substring(0, 30)}}</div>
+                                                    <span class="button toggle" id= {{cs.id}} ng-click="toggleaddress({{cs.id}})"> ...</span>
+                                                    <div class="clr"></div>
+                                                    <div class="clr"></div>
                                                     <div class="sche-date">
                                                         <div class="leftarrow" ng-click="getFirstSlots(cs.supersaas_id, $index, serv)">{{apkLanguage == 'english'? 'Earliest Slot' : earliest_slot[language]}}</div> 
                                                         <input type="date" ng-model="schCdate[$index]" value="schCdate[$index]|dateFormat1" ng-change="getNextSlots(schCdate[$index], cs.supersaas_id, $index, serv)"/>
@@ -234,7 +239,7 @@
                                                     <div ng-if="schC[$index] == cs.supersaas_id">
                                                         {{cSch[$index]==''? 'No slots available':''}}
                                                         <ul class="timesheet"  ng-repeat="(key,slot) in cSch[$index] track by $index">
-                                                            <li onclick="toggleclass(this);" ng-repeat="slt in slot" ng-if="slt['sdate'] < nextCdate[$parent.$parent.$index]" ng-model="timeslot" ng-click="bookSlot(slt['start'][0], slt['finish'][0], cs.supersaas_id)"> 
+                                                            <li onclick="toggleclass(this);" ng-repeat="slt in slot" ng-if="slt['sdate'] < nextCdate[$parent.$parent.$index]" ng-model="timeslot" ng-click="bookSlot(slt['start'][0], slt['finish'][0], cs.supersaas_id, cs.id)"> 
                                                                 {{slt['start'][0]|time1}}
                                                                 <!--{{slt['finish'][0]|time}}   -->                    
                                                             </li>

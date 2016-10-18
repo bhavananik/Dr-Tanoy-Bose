@@ -206,21 +206,21 @@
                                             </ul>
                                             <div class="clr"></div>
                                             <div class="item item-body p0 brd-0" ng-repeat="cs in clinicSch track by $index">
-                                                <!--<ul class="wk">
+<!--                                                <ul class="wk">
                                                     <li ng-repeat="day in cs.service_details| orderBy:'' | groupBy:['day_of_week']">
                                                         <strong ng-show="day.group_by_CHANGED">{{ day.day_of_week|limitTo:1}} : </strong>
                                                         {{day.from|limitTo:2}} - {{day.to|limitTo:2}}
                                                     </li>
                                                 </ul>-->
-                                                <!--                                                <div class="full addr hide" id = {{cs.id}}full>{{cs.address}}</div>
-                                                                                                <div class="short addr" id = {{cs.id}}short>{{cs.address.substring(0,30)}}</div>
-                                                                                                <input type = "button" class ="toggle" id= {{cs.id}} ng-click="toggleaddress({{cs.id}})" value="...">-->
+                                                <div class="full addr hide" id = {{cs.id}}full>{{cs.address}}</div>
+                                                <div class="short addr" id = {{cs.id}}short>{{cs.address.substring(0, 30)}}</div>
+                                                <input type = "button" class ="toggle" id= {{cs.id}} ng-click="toggleaddress({{cs.id}})" value="...">
                                             </div>
                                             <div class="sche-date">
                                                 <div class="leftarrow" ng-click="getFirstSlots(cs.supersaas_id, $index, serv)">{{apkLanguage == 'english'? 'Earliest Slot' : earliest_slot[language]}}</div> 
                                                 <input type="date" ng-model="schCdate[$index]" value="schCdate[$index]|dateFormat1" ng-change="getNextSlots(schCdate[$index], cs.supersaas_id, $index, serv)"/>
                                                 <input type="hidden" ng-model="nextCdate[$index]" value="nextCdate[$index]|datetime"/>
-                                                <div class="rightarrow" ng-click="getNextSlots(nextCdate, cs.supersaas_id, $index, serv)">{{apkLanguage == 'english'? 'Next Slot': next_slot[language]}}</div>
+                                                <div class="rightarrow" ng-click="getNextSlots(nextCdate, cs.supersaas_id, $index, cs.id)">{{apkLanguage == 'english'? 'Next Slot': next_slot[language]}}</div>
                                             </div>
                                             <div ng-if="schC[$index] == cs.supersaas_id">
                                                 {{cSch[$index]==''? 'No slots available':''}}
