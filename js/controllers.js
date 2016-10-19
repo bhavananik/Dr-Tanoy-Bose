@@ -3991,13 +3991,14 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
             $scope.name = "";
             $ionicModal.fromTemplateUrl('filesview.html', function ($ionicModal) {
                 $scope.modal = $ionicModal;
-                $scope.showm = function (path, name) {
+                $scope.showm = function (ahost, path, name) {
                     $scope.path = path;
                     $scope.name = name;
+                    //$rootScope.attachpath
                     console.log(path + '=afd =' + name);
-                    $scope.value = $rootScope.attachpath + path + name;
+                    $scope.value =  ahost + path + name;
                     $scope.modal.show();
-                }
+                };
 
             }, {
                 // Use our scope for the scope of the modal to keep it simple
