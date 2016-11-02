@@ -898,7 +898,7 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
 
 //bring specific category providers
 
-        .controller('CategoryListCtrl', function ($scope, $state, $http, $stateParams, $rootScope, $ionicLoading) {
+        .controller('CategoryListCtrl', function ($scope, $state, $http, $stateParams, $rootScope, $ionicLoading,$timeout,$ionicSlideBoxDelegate) {
             if (get('id') != null) {
                 $rootScope.userLogged = 1;
             } else {
@@ -913,6 +913,9 @@ angular.module('PasswordConfirm', []).directive('changePasswordC', function () {
                 params: {interfaceno: $scope.interface}
             }).then(function successCallback(response) {
                 $scope.sliderImages = response.data;
+                $timeout(function () {
+                    $ionicSlideBoxDelegate.update();
+                }, 1000);
             });
             $scope.getcatlang = function () {
                 $http({
