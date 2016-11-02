@@ -734,7 +734,7 @@ angular.module('your_app_name', [
 
                     .state('app.reschedule-appointment', {
                         cache: false,
-                        url: "/reschedule-appointment/{id:int}",
+                        url: "/reschedule-appointment/{id:int}/{drServId:int}",
                         views: {
                             'menuContent': {
                                 templateUrl: function () {
@@ -1045,7 +1045,7 @@ angular.module('your_app_name', [
                             }
                         }
                     })
-                     .state('app.video-broadcast', {
+                    .state('app.video-broadcast', {
                         cache: false,
                         url: "/video-broadcast",
                         views: {
@@ -1055,7 +1055,7 @@ angular.module('your_app_name', [
                             }
                         }
                     })
-                     .state('app.video-broadcast-create', {
+                    .state('app.video-broadcast-create', {
                         cache: false,
                         url: "/video-broadcast-create",
                         views: {
@@ -1065,7 +1065,7 @@ angular.module('your_app_name', [
                             }
                         }
                     })
-                     .state('app.video-broadcast-stream', {
+                    .state('app.video-broadcast-stream', {
                         cache: false,
                         url: "/video-broadcast-stream/{session_id:string}/{token:string}/{publish:int}",
                         views: {
@@ -1075,7 +1075,7 @@ angular.module('your_app_name', [
                             }
                         }
                     })
-                     .state('app.video-broadcast-interactive', {
+                    .state('app.video-broadcast-interactive', {
                         cache: false,
                         url: "/video-broadcast-interactive/{session_id:string}/{token:string}/{publish:int}",
                         views: {
@@ -1085,7 +1085,7 @@ angular.module('your_app_name', [
                             }
                         }
                     })
-                     .state('app.schedule-video-broadcast', {
+                    .state('app.schedule-video-broadcast', {
                         cache: false,
                         url: "/video-broadcast-schedule",
                         views: {
